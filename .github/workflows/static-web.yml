@@ -12,3 +12,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Code static code to S3
+        run: |
+          aws s3 sync ./ s3://ajay-gha-s3/ \
+          --exclude "*" \
+          --include "index.html"
